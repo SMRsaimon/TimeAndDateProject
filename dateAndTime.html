@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+        * {
+            background-color: rgb(252, 162, 207);
+        }
+        
+        div {
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 40px;
+            color: rgb(8, 8, 8);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="datetime"></div>
+    <div>
+        <h2 style="color: rgb(65, 23, 253)">SMR SAIMON KHAN</h2>
+    </div>
+
+    <script>
+        // get update time
+        function updateTime() {
+            let today = new Date();
+            // today = new Date().toString();
+            // console.log(today);
+
+            let day = today.getDate();
+            day = `0${day}`.slice(-2);
+            let month = today.getMonth() + 1;
+            month = `0${month}`.slice(-2);
+            let year = today.getFullYear();
+
+            // get time
+            let hour = today.getHours();
+
+            let prepand = hour >= 12 ? ' PM ' : 'AM';
+            if (hour > 12) {
+                hour = hour - 12;
+            }
+            hour = `0${hour}`;
+            hour = hour.slice(-2);
+            let min = today.getMinutes();
+            min = `0${min}`;
+            min = min.slice(-2);
+            let sec = today.getSeconds();
+            sec = `0${sec}`;
+            sec = sec.slice(-2);
+            document.getElementById('datetime').innerHTML = `
+			 <h3>Date :  ${day}-${month}-${year}  </h3>
+			  <h3>Time:  ${hour}:${min}:${sec}  ${prepand} </h3>
+			`;
+            setTimeout(updateTime, 1000);
+        }
+
+        updateTime();
+
+        // $(function() {
+        //     setInterval(function() {
+        //         $('#ct').html(new Date().toString());
+        //     }, 1000);
+        // });
+    </script>
+</body>
+
+</html>
